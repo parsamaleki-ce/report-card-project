@@ -81,6 +81,7 @@ if(p==s.shomare)
 cout<<s.name<<" "<<s.lastname<<"    "<<s.shomare<<"    "<<s.reshte<<"    "<<fixed << setprecision(2) << s.moadel;
 cout<<endl;
 }
+
 }
 
 void write4(sabt s,string x,string p)
@@ -110,6 +111,7 @@ cout<<"Lessons"<<"    "<<"Number of Unit"<<"      "<<"score"<<endl;
     
     }
 }
+
 }
 void deletee(sabt s[], int &tedaddaneshju, int p)
 {
@@ -250,15 +252,13 @@ for(int i=0;i<tedaddaneshju;i++)
 edit(s[i],id);
 bubblesort(s,tedaddaneshju);
 }
-if(c==6)
+else if(c==6)
 {
 int id;
 cout<<"Enter student ID to delete:";
 cin>>id;
 deletee(s,tedaddaneshju,id);
 }
-
-
 
 if(c==7)
 exit(0);
