@@ -10,19 +10,19 @@ int shomare;
 string reshte;
 string lessonname[10];
 int vahed[10];
-double nomre[10];
-double moadel=0;
+float nomre[10];
+float moadel=0;
 int tedaddars;
 }s;
 sabt read()
 {
 sabt s;
-cout<<"enter name:";cin>>s.name;
-cout<<"enter family:";cin>>s.lastname;
+cout<<"enter name of student:";cin>>s.name;
+cout<<"enter family of student:";cin>>s.lastname;
 cout<<"enter number of student courses:";cin>>s.tedaddars;
 cout<<"enter student id:";cin>>s.shomare;
 cout<<"enter field:";cin>>s.reshte;
-int sum=0;
+float sum=0;
 int jamevahed=0;
 for(int i=0;i<s.tedaddars;i++)
    {
@@ -34,7 +34,7 @@ for(int i=0;i<s.tedaddars;i++)
    }
 
 
- s.moadel = static_cast<double>(sum) / jamevahed;
+ s.moadel = (sum) / jamevahed;
  return s;
 }
 
@@ -44,9 +44,9 @@ void bubblesort(sabt s[], int n)
     for (int i=0;i<n-1;i++)
     {for (int j=0;j<n-i-1;j++)
      { if (s[j].moadel<s[j+1].moadel)
-        {   sabt temp =s[j+1];
-             s[j+1] =s[j];
-             s[j]=temp;
+        {sabt temp =s[j+1];
+        s[j+1] =s[j];
+        s[j]=temp;
         }
     }
 }}
@@ -128,7 +128,7 @@ return;
 }
  cout <<"Student with ID "<<p<<" not found."<<endl;
 }
-void edit(sabt &s,int p)
+void edit(sabt s,int p)
 {
   if(p==s.shomare)
 {
@@ -141,18 +141,22 @@ cout<<"Current field:"<<s.reshte<<endl;
 cout<<"Enter new field:";cin>>s.reshte;
 cout<<"Enter number of courses:";cin>>s.tedaddars;
     
-int sum = 0;
-int jamevahed = 0;
-for(int i = 0; i < s.tedaddars; i++)
+float sum=0;
+int jamevahed=0;
+for(int i=0;i<s.tedaddars;i++)
 {
-cout << "Enter lesson name: "; cin >> s.lessonname[i];
-cout << "Enter number of units: "; cin >> s.vahed[i];
-cout << "Enter nomre: "; cin >> s.nomre[i];
- sum += s.vahed[i] * s.nomre[i];
-        jamevahed += s.vahed[i];
+cout<<"Enter lesson name: "; cin>>s.lessonname[i];
+cout<<"Enter number of units: ";cin>>s.vahed[i];
+cout<<"Enter nomre: ";cin>>s.nomre[i];
+ sum += s.vahed[i]*s.nomre[i];
+        jamevahed+=s.vahed[i];
     }
-    s.moadel = static_cast<double>(sum) / jamevahed;
+    s.moadel=(sum)/jamevahed;
 }
+
+
+
+
 
 }
 
@@ -195,7 +199,7 @@ if(c==3)
         for (int i=0;i<tedaddaneshju;i++)
         write2(s[i],p);
     }
-  else if(w==1)
+  else if(w==2)
   {
   for (int i=0;i<tedaddaneshju;i++)
     {
@@ -244,7 +248,7 @@ int id;
 cin>>id;
 for(int i=0;i<tedaddaneshju;i++)
 edit(s[i],id);
-
+bubblesort(s,tedaddaneshju);
 }
 if(c==6)
 {
