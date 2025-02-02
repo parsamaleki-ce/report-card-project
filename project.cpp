@@ -83,11 +83,12 @@ cout<<endl;
 }
 }
 
-void write4(sabt s,string p)
+void write4(sabt s,string x,string p)
 {
 
-int k=s.name.find(p);
-if(k!=-1)
+int k=s.name.find(x);
+int o=s.lastname.find(p);
+if(k!=-1 && o!=-1)
 {cout<<"-----------------------------------------------------------------------------"<<endl;
 cout<<s.name<<" "<<s.lastname<<"    "<<s.shomare<<"    "<<s.reshte<<"    "<<fixed << setprecision(2) << s.moadel;
 cout<<endl;
@@ -130,30 +131,31 @@ return;
 void edit(sabt &s,int p)
 {
   if(p==s.shomare)
-  {
-    cout << "Editing student information:" << endl;
-    cout << "Current name: " << s.name << endl;
-    cout << "Enter new name: "; cin >> s.name;
-    cout << "Current family: " << s.lastname << endl;
-    cout << "Enter new family: "; cin >> s.lastname;
-    cout << "Current field: " << s.reshte << endl;
-    cout << "Enter new field: "; cin >> s.reshte;
-    cout << "Enter number of courses: "; cin >> s.tedaddars;
+{
+cout<<"Editing student information:"<<endl;
+cout<<"Current name:"<<s.name<<endl;
+cout<<"Enter new name:"; cin>>s.name;
+cout<<"Current family:" <<s.lastname<<endl;
+cout<<"Enter new family:"; cin>>s.lastname;
+cout<<"Current field:"<<s.reshte<<endl;
+cout<<"Enter new field:";cin>>s.reshte;
+cout<<"Enter number of courses:";cin>>s.tedaddars;
     
-    int sum = 0;
-    int jamevahed = 0;
-    for(int i = 0; i < s.tedaddars; i++)
-    {
-        cout << "Enter lesson name: "; cin >> s.lessonname[i];
-        cout << "Enter number of units: "; cin >> s.vahed[i];
-        cout << "Enter nomre: "; cin >> s.nomre[i];
-        sum += s.vahed[i] * s.nomre[i];
+int sum = 0;
+int jamevahed = 0;
+for(int i = 0; i < s.tedaddars; i++)
+{
+cout << "Enter lesson name: "; cin >> s.lessonname[i];
+cout << "Enter number of units: "; cin >> s.vahed[i];
+cout << "Enter nomre: "; cin >> s.nomre[i];
+ sum += s.vahed[i] * s.nomre[i];
         jamevahed += s.vahed[i];
     }
     s.moadel = static_cast<double>(sum) / jamevahed;
 }
 
 }
+
 
 int main()
 {
@@ -170,18 +172,18 @@ for (int i=0;i<tedaddaneshju;i++)
 bubblesort(s,tedaddaneshju);
 label_parsa:
 cout<<"-----------------------------------------------------------------------------"<<endl;
-cout<<"1-add a student information"<<endl;
-cout<<"2-search by id"<<endl;
-cout<<"3-search by name"<<endl;
-cout<<"4-list student"<<endl;
-cout<<"5-show report card"<<endl;
-cout<<"6-edit information of student"<<endl;
-cout<<"7-delete student"<<endl;
-cout<<"8-exit"<<endl;
+//cout<<"1-add a student information"<<endl;
+cout<<"1-search by id"<<endl;
+cout<<"2-search by name"<<endl;
+cout<<"3-list student"<<endl;
+cout<<"4-show report card"<<endl;
+cout<<"5-edit information of student"<<endl;
+cout<<"6-delete student"<<endl;
+cout<<"7-exit"<<endl;
 cout<<"enter your choice:";
 int c;
 cin>>c;
-if(c==4)
+if(c==3)
 {cout<<"1-list by major"<<endl;
  cout<<"2-list by grade point average"<<endl;
   int w;
@@ -193,7 +195,7 @@ if(c==4)
         for (int i=0;i<tedaddaneshju;i++)
         write2(s[i],p);
     }
-  else if(w==2)
+  else if(w==1)
   {
   for (int i=0;i<tedaddaneshju;i++)
     {
@@ -203,7 +205,7 @@ if(c==4)
 
 
 }
-else if(c==2)
+else if(c==1)
 {int x;
 cout<<"enter student number:";
 cin>>x;
@@ -213,17 +215,18 @@ write3(s[i],x);
 }
 
 }
-else if(c==3)
+else if(c==2)
 {string x;
-cout<<"enter student name:";
-cin>>x;
+string p;
+cout<<"enter student name:";cin>>x;
+cout<<"enter student lastname:";cin>>p;
 for (int i=0;i<tedaddaneshju;i++)
 {
-write4(s[i],x);
+write4(s[i],x,p);
 }
 
 }
-else if(c==5)
+else if(c==4)
 {string name;
 string family;
 int id;
@@ -234,7 +237,7 @@ for (int i=0;i<tedaddaneshju;i++)
 karname(s[i],id,name,family,tedaddaneshju);
 
 }
-else if(c==6)
+else if(c==5)
 {
 cout<<"enter student id you want to edit:";
 int id;
@@ -243,15 +246,17 @@ for(int i=0;i<tedaddaneshju;i++)
 edit(s[i],id);
 
 }
-if(c==7)
+if(c==6)
 {
 int id;
 cout<<"Enter student ID to delete:";
 cin>>id;
 deletee(s,tedaddaneshju,id);
-
 }
-if(c==8)
+
+
+
+if(c==7)
 exit(0);
 goto label_parsa;
 
