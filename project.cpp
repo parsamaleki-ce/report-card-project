@@ -170,6 +170,13 @@ int tedaddaneshju;
 cout<<"enter number of student:";
 int a;
 cin>>tedaddaneshju;
+if(cin.fail())
+{
+exit(0);
+
+
+}
+
 sabt s[tedaddaneshju];
 for (int i=0;i<tedaddaneshju;i++)
 {
@@ -264,5 +271,4 @@ if(c==7)
 exit(0);
 goto label_parsa;
 
-
-}
+  }
