@@ -84,18 +84,19 @@ cout<<endl;
 
 void write2(sabt s,string p)
 {
-
+cout<<"-----------------------------------------------------------------------------"<<endl;
 int k=s.reshte.find(p);
 if(k!=-1)
 
 {cout<<s.name<<" "<<s.lastname<<"    "<<s.shomare<<"    "<<s.reshte<<"    "<<fixed << setprecision(2) << s.moadel;
 
 cout<<endl;
+cout<<"-----------------------------------------------------------------------------"<<endl;
 }
 }
 
 void write3(sabt s,int p)
-{cout<<"-----------------------------------------------------------------------------"<<endl;
+{
 if(p==s.shomare)
 {
 cout<<s.name<<" "<<s.lastname<<"    "<<s.shomare<<"    "<<s.reshte<<"    "<<fixed << setprecision(2) << s.moadel;
@@ -150,18 +151,18 @@ return;
 }
  cout <<"Student with ID "<<p<<" not found."<<endl;
 }
-void edit(sabt s,int p)
+void edit(sabt& s,int p)
 {
   if(p==s.shomare)
 {
-cout<<"Editing student information:"<<endl;
-cout<<"Current name:"<<s.name<<endl;
-cout<<"Enter new name:"; cin>>s.name;
-cout<<"Current family:" <<s.lastname<<endl;
-cout<<"Enter new family:"; cin>>s.lastname;
-cout<<"Current field:"<<s.reshte<<endl;
-cout<<"Enter new field:";cin>>s.reshte;
-cout<<"Enter number of courses:";cin>>s.tedaddars;
+cout<<"editing student information:"<<endl;
+cout<<"current name:"<<s.name<<endl;
+cout<<"enter new name:"; cin>>s.name;
+cout<<"current family:" <<s.lastname<<endl;
+cout<<"enter new family:"; cin>>s.lastname;
+cout<<"current field:"<<s.reshte<<endl;
+cout<<"enter new field:";cin>>s.reshte;
+cout<<"enter number of courses:";cin>>s.tedaddars;
     
 float sum=0;
 int jamevahed=0;
@@ -240,11 +241,11 @@ else if(c==1)
 {int x;
 cout<<"enter student number:";
 cin>>x;
+cout<<"-----------------------------------------------------------------------------"<<endl;
 for (int i=0;i<tedaddaneshju;i++)
 {
 write3(s[i],x);
 }
-
 }
 else if(c==2)
 {string x;
@@ -263,7 +264,13 @@ string family;
 int id;
 cout<<"enter student name:";cin>>name;
 cout<<"enter student lastname:";cin>>family;
-cout<<"enter student id:";cin>>id;
+cout<<"enter student id:";
+cin>>id;
+if(cin.fail())
+{
+exit(0);
+}
+
 for (int i=0;i<tedaddaneshju;i++)
 karname(s[i],id,name,family,tedaddaneshju);
 
@@ -273,6 +280,10 @@ else if(c==5)
 cout<<"enter student id you want to edit:";
 int id;
 cin>>id;
+if(cin.fail())
+{
+exit(0);
+}
 for(int i=0;i<tedaddaneshju;i++)
 edit(s[i],id);
 bubblesort(s,tedaddaneshju);
@@ -282,6 +293,11 @@ else if(c==6)
 int id;
 cout<<"Enter student ID to delete:";
 cin>>id;
+if(cin.fail())
+{
+exit(0);
+}
+
 deletee(s,tedaddaneshju,id);
 }
 
