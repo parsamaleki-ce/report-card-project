@@ -19,16 +19,36 @@ sabt read()
 sabt s;
 cout<<"enter name of student:";cin>>s.name;
 cout<<"enter family of student:";cin>>s.lastname;
-cout<<"enter number of student courses:";cin>>s.tedaddars;
-cout<<"enter student id:";cin>>s.shomare;
+cout<<"enter number of student courses:";
+cin>>s.tedaddars;
+if(cin.fail())
+{
+  exit(0);
+}
+cout<<"enter student id:";
+cin>>s.shomare;
+if(cin.fail())
+{
+exit(0);
+}
 cout<<"enter field:";cin>>s.reshte;
 float sum=0;
 int jamevahed=0;
 for(int i=0;i<s.tedaddars;i++)
    {
      cout<<"enter lesson name:";cin>>s.lessonname[i];
-     cout<<"enter number of units:";cin>>s.vahed[i];
-     cout<<"enter nomre:";cin>>s.nomre[i];
+     cout<<"enter number of units:";
+     cin>>s.vahed[i];
+     if(cin.fail())
+        {
+        exit(0);
+        }
+     cout<<"enter nomre:";
+     cin>>s.nomre[i];
+     if(cin.fail())
+        {
+            exit(0);
+        }
         sum+=s.vahed[i]*s.nomre[i];
         jamevahed+=s.vahed[i];
    }
@@ -173,8 +193,6 @@ cin>>tedaddaneshju;
 if(cin.fail())
 {
 exit(0);
-
-
 }
 
 sabt s[tedaddaneshju];
